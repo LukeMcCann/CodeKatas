@@ -19,6 +19,14 @@ const rot13 = (str = '') => {
   return [...sanitisedStr].map(rotateChar).join('');
 };
 
+// ALternate
+
+const rot13 = (str = '') => String(str ?? '').replace(/[a-zA-Z]/g, (c) =>
+  String.fromCharCode(
+    c.charCodeAt(0) + (c.toLowerCase() < 'n' ? 13 : -13)
+  )
+);
+
 // Tests
 
 describe("Sample tests", () => {
