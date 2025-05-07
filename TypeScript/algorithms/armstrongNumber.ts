@@ -1,10 +1,14 @@
-const getDigits = (number: Number): number[] => number.toString().split('').map(digit => Number(digit));
+const getDigits = (number: number): number[] =>
+  number.toString().split('').map(d => Number(d));
 
-export const narcissistic = (number: Number): Boolean => {
-    const digits = getDigits(number);
+export const narcissistic = (number: number): boolean => {
+  if (number < 0 || !Number.isInteger(number)) return false;
 
-    return digits.reduce((acc, val) => acc + Math.pow(val, digits.length), 0) === number;
-}
+  const digits = getDigits(number);
+  const sum = digits.reduce((acc, val) => acc + Math.pow(val, digits.length), 0);
+  
+  return sum === number;
+};
 
 // Kata Tests
 
